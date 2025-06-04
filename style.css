@@ -254,8 +254,10 @@
 
         .communication-section {
             border-top: 1px solid #e1e5e9;
-            padding-top: 24px;
+            padding: 30px;
+            border-radius: 10px;
             margin-top: 32px;
+            background-color:#e8e6e6 ;
         }
 
         .checkbox-item {
@@ -269,9 +271,9 @@
             margin-bottom: 12px;
             transition: all 0.3s ease;
         }
-
-        .checkbox-item:hover {
-            border-color: #0d9298;
+        .check {
+            font-size: 70px;
+            accent-color: #0d9298;
         }
 
         .checkbox-content {
@@ -283,15 +285,6 @@
         .checkbox-label {
             font-weight: 500;
             color: #333;
-        }
-
-        
-        input[type="checkbox"] {
-            display: none;
-        }
-
-        input[type="checkbox"]:checked + .checkmark:after {
-            display: block;
         }
 
         /* Responsive styles */
