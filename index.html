@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward Expiry Settings</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="All">
+        <div class="left"></div>
+        <div class="right">     
+            <div class="container">
+                <div class="header">
+                    <div class="icon-placeholder"><img class="icon" src="plus.png" alt="Plus icon"/></div>
+                    <p>Capture customers from events & bring them in-store</p>
+                </div>
+
+                <h1>Now, choose when the reward expires and the channel for communication</h1>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <div class="form-label">
+                            <div class="icon-placeholder"><img class="icon2" src="clock.png" alt="Clock icon"/></div>
+                            <span>Reward Expires In</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <input type="number" class="number-input" value="30" min="1">
+                                <select class="dropdown">
+                                    <option>days</option>
+                                    <option>weeks</option>
+                                    <option>months</option>
+                                </select>
+                            </div>
+                            <span class="helper-text">After the customer claims the reward</span>
+                        </div>
+                    </div>
+
+                    <div class="toggle-section">
+                        <div class="toggle-label">
+                            <div class="form-label">
+                                <div class="icon-placeholder"><img class="icon2" src="bell.png" alt="Bell icon"/></div>
+                                <span>Send reward expiry communication</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="expiryToggle">
+                                <div class="toggle-switch-background">
+                                    <div class="toggle-switch-handle"></div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-row di">
+                            <div class="input-group">
+                                <input type="number" class="number-input" value="3" min="1">
+                                <select class="dropdown">
+                                    <option>days</option>
+                                    <option>weeks</option>
+                                    <option>months</option>
+                                </select>
+                            </div>
+                            <span class="helper-text">before the reward expires</span>
+                        </div>
+
+                        <div class="info-box" id="infoBox">
+                            <div class="info-content">
+                                <div class="icon-placeholder"><img class="icon2" src="bulb.png" alt="Bulb icon"/></div>
+                                <div class="info-text">
+                                    <strong>Customer gets a reminder message on the last day of reward expiring.</strong><br>
+                                    You can <span class="link-text">set 1 more reminder</span> <strong>a few days before the expiry</strong> to increase the chances of redemption.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="communication-section">
+                    <div class="form-label">
+                        <div class="icon-placeholder"><img class="icon2" src="mobile.png" alt="Mobile icon"/></div>
+                        <span>Select Communication Channel</span>
+                    </div>
+
+                    <div class="checkbox-item">
+                        <div class="checkbox-content">
+                            <div class="checkbox-icon"><img class="icon3" src="Whatsapp.png" alt="WhatsApp icon"/></div>
+                            <span class="checkbox-label">Whatsapp Utility</span>
+                        </div>
+                        <label>
+                            <input type="checkbox">
+                        </label>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox-content">
+                            <div class="checkbox-icon"><img class="icon3" src="message.png" alt="Message icon"/></div>
+                            <span class="checkbox-label">SMS</span>
+                        </div>
+                        <label>
+                            <input type="checkbox">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle functionality
+        document.getElementById('expiryToggle').addEventListener('change', function() {
+            const infoBox = document.getElementById('infoBox');
+            const form = document.querySelector('.di');
+            if (this.checked) {
+                infoBox.style.display = "block";
+                form.style.display = "flex";
+            } else {
+                infoBox.style.display = "none";
+                form.style.display = "none";
+            }
+        });
+
+        // Form validation for number inputs
+        document.querySelectorAll('.number-input').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.value < 1) this.value = 1;
+                if (this.value > 365) this.value = 365;
+            });
+        });
+
+        // Initialize info box state based on toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('expiryToggle');
+            const infoBox = document.getElementById('infoBox');
+            infoBox.style.display = toggle.checked ? "block" : "none";
+        });
+    </script>
+</body>
+</html>
