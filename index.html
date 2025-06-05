@@ -156,10 +156,10 @@
 
 
         .color-circle {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            border: 2px solid white;
+            border: 2px solid rgb(224, 222, 222);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             cursor: pointer;
             position: relative;
@@ -199,7 +199,27 @@
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            width: 150px;
+            width: 100%;
+            transition: ease-in-out 0.3s;
+        }
+        .dropdown:hover {
+            border-color: #0d9298;
+        }
+        .dropdown_input{
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #9c9999;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+            background: white;
+            padding-right: 30px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .dropdown_input:focus {
+            border:2px solid #0d9298;
         }
 
         /* Responsive styles */
@@ -306,6 +326,7 @@
                                 <option>months</option>
                             </select>
                         </div>
+                        <input class="dropdown_input" type="text"/>
                     </div>
                 </div>
             </div>
