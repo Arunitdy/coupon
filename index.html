@@ -238,11 +238,33 @@
             cursor: pointer;
             background: white;
             padding-right: 30px;
-            margin-top: 10px;
+            margin-top: 15px;
             width: 100%;
         }
         .dropdown_input:focus {
             border:2px solid #0d9298;
+        }
+        .input-group {
+            border-bottom: 1px solid #ccc; 
+            padding-bottom: 16px;
+            margin-bottom: 24px; 
+        }
+        .Add_more_action{
+            background-color: transparent;
+            color:  #0d9298;
+            border: none;
+            padding:0px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+            vertical-align: middle;
+        }
+        .Add_more_action img {
+            width: 17px;
+            height: 17px;
+            margin-bottom: 4px;
+            margin-right: 5px;
+            vertical-align: middle;
         }
 
         /* Responsive styles */
@@ -317,7 +339,7 @@
                         <p class="helper-text">Recommended size 512 x 512 px in JPG, GIF or PNG format up-to max size of 10MB</p>
                         <div class="form-row">
                             <div class="upload-container">
-                                <label for="fileInput" class="upload-label" id="uploadLabel">Upload</label>
+                                <label for="fileInput" class="upload-label" id="uploadLabel"><img class="icon" src="upload.svg"/>   Upload</label>
                                 <input type="file" id="fileInput">
                             </div>
                         </div>
@@ -342,7 +364,7 @@
                         <div class="form-label">
                             <h3>How can customers know more about you?</h3>
                         </div>
-                        <div >
+                        <div class="input-group">
                             <div class="form-row">
                                 <select class="dropdown">
                                     <option>facebook</option>
@@ -352,6 +374,7 @@
                             </div>
                             <input class="dropdown_input" placeholder="facebook" type="text"/>
                         </div>
+                        <button class="Add_more_action" type="submit"><img src="plus-solid.svg"/>Add more action</button>
                     </div>
                 </div>
             </div>
