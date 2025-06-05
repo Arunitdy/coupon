@@ -128,13 +128,24 @@
         }
 
         .color-preferences {
+            gap: 24px;
+            display: flex ;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 24px;
         }
 
-        .color-row {
+        .color-row {       
+            gap: 12px;
+            flex-grow: 1;
+            width: 100%;
+            padding: 16px;
+            border-radius: 8px;
+            background: #f7f8f8;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
-            margin-bottom: 16px;
+            justify-content: space-between;
         }
 
         .color-row p {
@@ -145,11 +156,13 @@
         }
 
         .primary-color-picker {
-            width: 60px;
-            height: 40px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
             cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 1px #0000000d, 0 0 1px #00000040;
         }
 
         .dropdown {
@@ -251,13 +264,13 @@
                         <div class="color-row">
                             <p>Theme color</p>
                             <div class="primary-color-picker-div">
-                                <input name="bgColor" type="color" class="primary-color-picker" value="#038C8B">
+                            <input name="bgColor" type="color" class="primary-color-picker" value="#038C8B">
                             </div>
                         </div>
                         <div class="color-row">
                             <p>Text color</p>
                             <div class="primary-color-picker-div">
-                                <input name="txtColor" type="color" class="primary-color-picker" value="#ffffff">
+                            <input name="txtColor" type="color" class="primary-color-picker" value="#ffffff">
                             </div>
                         </div>
                     </div>
