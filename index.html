@@ -387,18 +387,22 @@
         const uploadLabel = document.getElementById('uploadLabel');
 
         fileInput.addEventListener('change', function () {
-            if (fileInput.files.length > 0) {
-            uploadLabel.textContent = fileInput.files[0].name;
-            } else {
-            uploadLabel.textContent = "Upload";
-            }
+            uploadLabel.textContent = fileInput.files.length > 0
+            ? fileInput.files[0].name
+            : "Upload";
         });
 
         const addMoreBtn = document.querySelector(".Add_more_action");
         const actionContainer = document.getElementById("actionContainer");
 
+        function attachDropdownListener(selectElement, inputElement) {
+            selectElement.addEventListener('change', () => {
+            inputElement.placeholder = selectElement.value;
+            });
+        }
+
         addMoreBtn.addEventListener("click", function (e) {
-            e.preventDefault(); // Prevent form submission if inside a form
+            e.preventDefault();
 
             const newGroup = document.createElement("div");
             newGroup.classList.add("input-group");
@@ -415,8 +419,18 @@
             `;
 
             actionContainer.appendChild(newGroup);
+
+            const newSelect = newGroup.querySelector('select');
+            const newInput = newGroup.querySelector('input');
+            attachDropdownListener(newSelect, newInput);
         });
+
+        // Initial listener for the first dropdown-input pair
+        const firstSelect = document.querySelector("#actionContainer select");
+        const firstInput = document.querySelector("#actionContainer input");
+        attachDropdownListener(firstSelect, firstInput);
     </script>
+
 
 </body>
 </html>
