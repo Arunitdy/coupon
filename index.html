@@ -212,6 +212,7 @@
             .container {
                 padding: 16px;
             }
+            
         }
 
         @media (max-width: 480px) {
@@ -232,6 +233,7 @@
             .color-row p {
                 margin-bottom: 8px;
             }
+            
         }
     </style>
 </head>
@@ -255,7 +257,7 @@
                         <p class="helper-text">Recommended size 512 x 512 px in JPG, GIF or PNG format up-to max size of 10MB</p>
                         <div class="form-row">
                            <form action="/upload" method="post" enctype="multipart/form-data">
-                                <label for="file">Choose a file:</label>
+                                <label for="file"></label>
                                 <input type="file" id="file" name="file">
                             </form>
                         </div>
