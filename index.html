@@ -364,15 +364,17 @@
                         <div class="form-label">
                             <h3>How can customers know more about you?</h3>
                         </div>
-                        <div class="input-group">
-                            <div class="form-row">
+                        <div id="actionContainer">
+                            <div class="input-group">
+                                <div class="form-row">
                                 <select class="dropdown">
                                     <option>facebook</option>
                                     <option>instagram</option>
                                     <option>zomato</option>
                                 </select>
+                                </div>
+                                <input class="dropdown_input" placeholder="facebook" type="text"/>
                             </div>
-                            <input class="dropdown_input" placeholder="facebook" type="text"/>
                         </div>
                         <button class="Add_more_action" type="submit"><img src="plus-solid.svg"/>Add more action</button>
                     </div>
@@ -391,6 +393,30 @@
             uploadLabel.textContent = "Upload";
             }
         });
+
+        const addMoreBtn = document.querySelector(".Add_more_action");
+        const actionContainer = document.getElementById("actionContainer");
+
+        addMoreBtn.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent form submission if inside a form
+
+            const newGroup = document.createElement("div");
+            newGroup.classList.add("input-group");
+
+            newGroup.innerHTML = `
+            <div class="form-row">
+                <select class="dropdown">
+                <option>facebook</option>
+                <option>instagram</option>
+                <option>zomato</option>
+                </select>
+            </div>
+            <input class="dropdown_input" placeholder="facebook" type="text"/>
+            `;
+
+            actionContainer.appendChild(newGroup);
+        });
     </script>
+
 </body>
 </html>
