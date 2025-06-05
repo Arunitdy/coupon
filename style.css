@@ -259,7 +259,11 @@
             margin-top: 32px;
             background-color:#e8e6e6 ;
         }
-
+        .checkbox-description{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
         .checkbox-item {
             display: flex;
             align-items: center;
@@ -281,10 +285,17 @@
             align-items: center;
             gap: 12px;
         }
+        .checkbox-text{
+            display: flex;
+            flex-direction: column;
+        }
 
         .checkbox-label {
             font-weight: 500;
             color: #333;
+        }
+        .check1 {
+            margin-left:auto ;
         }
 
         /* Responsive styles */
