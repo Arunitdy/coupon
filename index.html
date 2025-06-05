@@ -443,7 +443,7 @@
               <p>Text color</p>
               <div class="color-circle">
                 <div class="color-preview" style="background-color: #ffffff;"></div>
-                <input type="color" name="txtColor" value="#ffffff" />
+                <input  type="color" name="txtColor" value="#ffffff" />
               </div>
             </div>
           </div>
@@ -547,6 +547,13 @@
 
       actionContainer.appendChild(newGroup);
       setupDropdown(newGroup.querySelector(".custom-dropdown"));
+    });
+      document.querySelectorAll(".color-circle input[type='color']").forEach((picker) => {
+      picker.addEventListener("input", () => {
+        const preview = picker.parentElement.querySelector(".color-preview");
+        preview.style.backgroundColor = picker.value;
+        console.log(`Color changed to: ${picker.value}`);
+      });
     });
   </script>
 </body>
