@@ -204,17 +204,79 @@
             height: 100%;
             border-radius: 50%;
         }
+/* ADD this for custom dropdown styles: */
+    .custom-dropdown-wrapper {
+      position: relative;
+      width: 100%;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
 
-        .dropdown {
+    .custom-dropdown {
+      position: relative;
+      user-select: none;
+    }
+
+    .selected {
+      background-color: white;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #9c9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .selected span {
+      flex: 1;
+      color: #333;
+    }
+
+    .selected .icon-img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    .dropdown-options {
+      position: absolute;
+      background-color: #edf2f3;
+      border-bottom: 1px solid #ccc; 
+      border-radius: 8px;
+      width: 100%;
+      top: 110%;
+      left: 0;
+      z-index: 10;
+      display: none;
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .dropdown-options li {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .dropdown-options li:hover {
+      background-color: #d7e9ea;
+    }
+
+    .dropdown-options .icon-img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    .arrow {
             border: none;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #9c9999;
-            border-radius: 8px;
-            outline: none;
-            cursor: pointer;
-            background: white;
-            padding-right: 30px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 10px center;
@@ -224,6 +286,7 @@
             -moz-appearance: none;
             width: 100%;
             transition: ease-in-out 0.3s;
+            color: white;
         }
         .dropdown:hover {
             border-color: #0d9298;
@@ -320,117 +383,150 @@
     </style>
 </head>
 <body>
-    <div class="All">
-        <div class="left"></div>
-        <div class="right">     
-            <div class="container">
-                <div class="header">
-                    <div class="icon-placeholder"><img class="icon" src="plus.png" alt="Plus icon"/></div>
-                    <p>Capture customers from events & bring them in-store</p>
-                </div>
-
-                <h2>Customize your QR code landing page</h2>
-
-                <div class="form-section">
-                    <div class="form-group">
-                        <div class="form-label">
-                            <h3>Logo</h3>
-                        </div>
-                        <p class="helper-text">Recommended size 512 x 512 px in JPG, GIF or PNG format up-to max size of 10MB</p>
-                        <div class="form-row">
-                            <div class="upload-container">
-                                <label for="fileInput" class="upload-label" id="uploadLabel"><img class="icon" src="upload.svg"/>   Upload</label>
-                                <input type="file" id="fileInput">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="color-preferences">
-                        <div class="color-row">
-                            <p>Theme color</p>
-                            <div class="color-circle">
-                                <div class="color-preview" style="background-color: #038C8B;"></div>
-                                <input type="color" name="bgColor" value="#038C8B">
-                            </div>
-                        </div>
-                        <div class="color-row">
-                            <p>Text color</p>
-                            <div class="color-circle">
-                                <div class="color-preview" style="background-color: #ffffff;"></div>
-                                <input type="color" name="txtColor" value="#ffffff">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-label">
-                            <h3>How can customers know more about you?</h3>
-                        </div>
-                        <div id="actionContainer">
-                            <div class="input-group">
-                                <div class="form-row">
-                                <select class="dropdown">
-                                    <option>facebook</option>
-                                    <option>instagram</option>
-                                    <option>zomato</option>
-                                </select>
-                                </div>
-                                <input class="dropdown_input" placeholder="facebook" type="text"/>
-                            </div>
-                        </div>
-                        <button class="Add_more_action" type="submit"><img src="plus-solid.svg"/>Add more action</button>
-                    </div>
-                </div>
-            </div>
+  <div class="All">
+    <div class="left"></div>
+    <div class="right">
+      <div class="container">
+        <div class="header">
+          <div class="icon-placeholder">
+            <img class="icon" src="plus.png" alt="Plus icon"/>
+          </div>
+          <p>Capture customers from events & bring them in-store</p>
         </div>
-    </div>
-    <script>
-        const fileInput = document.getElementById('fileInput');
-        const uploadLabel = document.getElementById('uploadLabel');
 
-        fileInput.addEventListener('change', function () {
-            uploadLabel.textContent = fileInput.files.length > 0
-            ? fileInput.files[0].name
-            : "Upload";
-        });
+        <h2>Customize your QR code landing page</h2>
 
-        const addMoreBtn = document.querySelector(".Add_more_action");
-        const actionContainer = document.getElementById("actionContainer");
-
-        function attachDropdownListener(selectElement, inputElement) {
-            selectElement.addEventListener('change', () => {
-            inputElement.placeholder = selectElement.value;
-            });
-        }
-
-        addMoreBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            const newGroup = document.createElement("div");
-            newGroup.classList.add("input-group");
-
-            newGroup.innerHTML = `
-            <div class="form-row">
-                <select class="dropdown">
-                <option>facebook</option>
-                <option>instagram</option>
-                <option>zomato</option>
-                </select>
+        <div class="form-section">
+          <div class="form-group">
+            <div class="form-label">
+              <h3>Logo</h3>
             </div>
-            <input class="dropdown_input" placeholder="facebook" type="text"/>
-            `;
+            <p class="helper-text">
+              Recommended size 512 x 512 px in JPG, GIF or PNG format up-to max size of 10MB
+            </p>
+            <div class="form-row">
+              <div class="upload-container">
+                <label for="fileInput" class="upload-label" id="uploadLabel">
+                  <img class="icon" src="upload.svg"/> Upload
+                </label>
+                <input type="file" id="fileInput" />
+              </div>
+            </div>
+          </div>
 
-            actionContainer.appendChild(newGroup);
+          <div class="color-preferences">
+            <div class="color-row">
+              <p>Theme color</p>
+              <div class="color-circle">
+                <div class="color-preview" style="background-color: #038C8B;"></div>
+                <input type="color" name="bgColor" value="#038C8B" />
+              </div>
+            </div>
+            <div class="color-row">
+              <p>Text color</p>
+              <div class="color-circle">
+                <div class="color-preview" style="background-color: #ffffff;"></div>
+                <input type="color" name="txtColor" value="#ffffff" />
+              </div>
+            </div>
+          </div>
 
-            const newSelect = newGroup.querySelector('select');
-            const newInput = newGroup.querySelector('input');
-            attachDropdownListener(newSelect, newInput);
+          <div class="form-group">
+            <div class="form-label">
+              <h3>How can customers know more about you?</h3>
+            </div>
+            <div id="actionContainer">
+              <!-- Default dropdown -->
+              <div class="custom-dropdown-wrapper input-group">
+                <div class="custom-dropdown">
+                  <div class="selected">
+                    <img class="icon-img" src="blank.png" alt="">
+                    <span>facebook</span>
+                    <p class="arrow"> .</p>
+                  </div>
+                  <ul class="dropdown-options">
+                    <li data-value="facebook"><img class="icon-img" src="blank.png"> Facebook</li>
+                    <li data-value="instagram"><img class="icon-img" src="blank.png"> Instagram</li>
+                    <li data-value="zomato"><img class="icon-img" src="blank.png"> Zomato</li>
+                  </ul>
+                </div>
+                <input class="dropdown_input" placeholder="facebook" type="text" />
+              </div>
+            </div>
+            <button class="Add_more_action" type="submit">
+              <img src="plus-solid.svg" />Add more action
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const uploadLabel = document.getElementById("uploadLabel");
+
+    fileInput.addEventListener("change", function () {
+      uploadLabel.textContent =
+        fileInput.files.length > 0 ? fileInput.files[0].name : "Upload";
+    });
+
+    function setupDropdown(dropdown) {
+      const selected = dropdown.querySelector(".selected");
+      const options = dropdown.querySelector(".dropdown-options");
+      const input = dropdown.parentElement.querySelector(".dropdown_input");
+
+      selected.addEventListener("click", () => {
+        options.style.display = options.style.display === "block" ? "none" : "block";
+      });
+
+      options.querySelectorAll("li").forEach((option) => {
+        option.addEventListener("click", () => {
+          const text = option.getAttribute("data-value");
+          selected.querySelector("span").textContent = text;
+          input.placeholder = text;
+          options.style.display = "none";
         });
+      });
 
-        // Initial listener for the first dropdown-input pair
-        const firstSelect = document.querySelector("#actionContainer select");
-        const firstInput = document.querySelector("#actionContainer input");
-        attachDropdownListener(firstSelect, firstInput);
-    </script>
+      // Close dropdown if clicked outside
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) {
+          options.style.display = "none";
+        }
+      });
+    }
 
+    // Setup initial dropdown
+    document.querySelectorAll(".custom-dropdown").forEach(setupDropdown);
 
+    // Add more dropdowns
+    document.querySelector(".Add_more_action").addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const actionContainer = document.getElementById("actionContainer");
+      const newGroup = document.createElement("div");
+      newGroup.classList.add("custom-dropdown-wrapper", "input-group");
+
+      newGroup.innerHTML = `
+        <div class="custom-dropdown">
+          <div class="selected">
+            <img class="icon-img" src="blank.png" alt="">
+            <span>facebook</span>
+            <p class="arrow"> .</p>
+          </div>
+          <ul class="dropdown-options">
+            <li data-value="facebook"><img class="icon-img" src="blank.png"> Facebook</li>
+            <li data-value="instagram"><img class="icon-img" src="blank.png"> Instagram</li>
+            <li data-value="zomato"><img class="icon-img" src="blank.png"> Zomato</li>
+          </ul>
+        </div>
+        <input class="dropdown_input" placeholder="facebook" type="text"/>
+      `;
+
+      actionContainer.appendChild(newGroup);
+      setupDropdown(newGroup.querySelector(".custom-dropdown"));
+    });
+  </script>
 </body>
 </html>
