@@ -279,15 +279,18 @@
             font-size: 70px;
             accent-color: #0d9298;
         }
-
+            
+        
         .checkbox-content {
             display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .checkbox-text{
-            display: flex;
             flex-direction: column;
+            flex-grow: 1;
+            margin-right: 6px;
+        }
+        .sms {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
 
         .checkbox-label {
@@ -297,7 +300,9 @@
         .check1 {
             margin-left:auto ;
         }
-
+        .icon4 {
+            margin-left: auto;
+        }
         /* Responsive styles */
         @media (max-width: 1200px) {
             .All {
@@ -342,6 +347,9 @@
             .container {
                 padding: 16px;
             }
+             .icon4 {
+            width: 100px;
+             }
         }
         @media (max-width: 550px) {
             .toggle-label{
