@@ -348,7 +348,7 @@
                 padding: 16px;
             }
              .icon4 {
-            width: 100px;
+              display: none;
              }
         }
         @media (max-width: 550px) {
