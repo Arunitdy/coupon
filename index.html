@@ -177,7 +177,7 @@
         .color-row p {
             margin-right: 16px;
             font-weight: 500;
-            color: #444;
+            font-weight: bold;
         }
 
 
@@ -277,6 +277,19 @@
       width: 20px;
       height: 20px;
       margin-right: 8px;
+    }
+    .dropdown-options .remove-item {
+        padding: 0px;
+    }
+    .dropdown-options .remove-item  button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 10px;
+        width:100%;
+        height: 100%;
+        text-align: left;
     }
 
     .arrow {
@@ -403,7 +416,7 @@
         <div class="form-section">
           <div class="form-group">
             <div class="form-label">
-              <h3>Logo</h3>
+              <h3 class="black_font">Logo</h3>
             </div>
             <p class="helper-text">
               Recommended size 512 x 512 px in JPG, GIF or PNG format up-to max size of 10MB
@@ -411,7 +424,7 @@
             <div class="form-row">
               <div class="upload-container">
                 <label for="fileInput" class="upload-label" id="uploadLabel">
-                  <img class="icon" src="upload.svg"/> Upload
+                  <img class="icon" src="upload.svg"/> Upload Your Logo
                 </label>
                 <input type="file" id="fileInput" />
               </div>
@@ -420,13 +433,13 @@
 
           <div class="color-preferences">
             <div class="color-row">
-              <p>Theme color</p>
+              <p class="black_font]">Theme color</p>
               <div class="color-circle">
                 <div class="color-preview" style="background-color: #038C8B;"></div>
                 <input type="color" name="bgColor" value="#038C8B" />
               </div>
             </div>
-            <div class="color-row">
+            <div  class=" black_font color-row">
               <p>Text color</p>
               <div class="color-circle">
                 <div class="color-preview" style="background-color: #ffffff;"></div>
@@ -437,7 +450,7 @@
 
           <div class="form-group">
             <div class="form-label">
-              <h3>How can customers know more about you?</h3>
+              <h3 class="black_font">How can customers know more about you?</h3>
             </div>
             <div id="actionContainer">
               <!-- Default dropdown -->
@@ -503,7 +516,10 @@
 
     // Setup initial dropdown
     document.querySelectorAll(".custom-dropdown").forEach(setupDropdown);
-
+    function removeGroup(button) {
+        const group = button.closest(".input-group");
+        if (group) group.remove();
+    }
     // Add more dropdowns
     document.querySelector(".Add_more_action").addEventListener("click", function (e) {
       e.preventDefault();
@@ -519,11 +535,12 @@
             <span>facebook</span>
             <p class="arrow"> .</p>
           </div>
-          <ul class="dropdown-options">
-            <li data-value="facebook"><img class="icon-img" src="blank.png"> Facebook</li>
-            <li data-value="instagram"><img class="icon-img" src="blank.png"> Instagram</li>
-            <li data-value="zomato"><img class="icon-img" src="blank.png"> Zomato</li>
-          </ul>
+        <ul class="dropdown-options">
+          <li class="remove-item"><button class="remove-btn" onclick="removeGroup(this)"> Remove this action button</button></li>
+          <li data-value="facebook"><img class="icon-img" src="blank.png"> Facebook</li>
+          <li data-value="instagram"><img class="icon-img" src="blank.png"> Instagram</li>
+          <li data-value="zomato"><img class="icon-img" src="blank.png"> Zomato</li>
+        </ul>
         </div>
         <input class="dropdown_input" placeholder="facebook" type="text"/>
       `;
